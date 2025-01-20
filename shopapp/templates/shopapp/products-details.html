@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'shopapp/base.html' %}
+
+{% block title %}
+    Товар №{{ product.pk }}
+{% endblock %}
+
+{% block body %}
+    <h1>Товар {{ product.name }}:</h1>
+    <div>
+        <div>Описание: <em>{{ product.description }}</em></div>
+        <div>Цена: {{ product.price }}</div>
+        <div>Скидка: {{ product.discount }}</div>
+        <div>Архивировано: {{ product.archived }}</div>
+    </div>
+    <div>
+        <a href="{% url 'shopapp:product_update' pk=product.pk %}">Изменить товар</a>
+    </div>
+
+    <div>
+        <a href="{% url 'shopapp:product_delete' pk=product.pk %}">Удалить товар</a>
+    </div>
+
+    <div>
+        <a href="{% url 'shopapp:products_list' %}">Обратно к товарам</a>
+    </div>
+{% endblock %}

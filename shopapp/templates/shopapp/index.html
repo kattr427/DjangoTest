@@ -1,10 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'shopapp/base.html' %}
 
-</body>
-</html>
+{% block title %}
+    Index
+{% endblock %}
+
+
+{% block body %}
+    New Shop
+    <ul>
+        {% for name, price in goods %}
+            <li>Товар - {{name}} {{name|length}} по цене {{price}}руб.</li>
+            {% if name|length == 8 %}
+                <span> long name </span>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

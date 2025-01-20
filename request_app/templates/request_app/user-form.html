@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'request_app/base.html' %}
+
+{% block title %}
+    User info
+{% endblock %}
+
+{% block body %}
+
+    <h1>User form</h1>
+
+    <div>
+        <form method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit">
+                Сохранить
+            </button>
+        </form>
+    </div>
+
+    {% if request.POST %}
+        <div>
+            <h2>Переданные данные:</h2>
+
+        <table>
+            <tr>
+                <td>Имя:</td>
+                <td>{{ request.POST.name }}</td>
+            </tr>
+
+            <tr>
+                <td>Возраст:</td>
+                <td>{{ request.POST.age }}</td>
+            </tr>
+
+            <tr>
+                <td>Информация:</td>
+                <td>{{ request.POST.info|linebreaks }}</td>
+            </tr>
+
+        </table>
+        </div>
+    {% endif %}
+
+{% endblock %}

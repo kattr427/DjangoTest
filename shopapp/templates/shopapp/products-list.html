@@ -7,4 +7,20 @@
 {% block body %}
     <h1>Товары:</h1>
 
+    <div>
+        <ul>
+            {% for product in products %}
+                <li>
+                    <p><a href="{% url 'shopapp:product_details' pk=product.pk %}">Название: {{ product.name }}</a> </p>
+                    <p>Цена: {{ product.price }}</p>
+                    <p>Скидка: {{ product.discount }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <a href="{% url 'shopapp:product_create' %}">Создать товар</a>
+    </div>
+
 {% endblock %}

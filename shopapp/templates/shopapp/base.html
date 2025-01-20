@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Base title
+        {% endblock %}
+    </title>
 </head>
 <body>
-$END$
+        {% block body %}
+            Base Body
+        {% endblock %}
+
+    <h1>Hello!</h1>
+    <div>
+        Time running {{ time_running }}
+    </div>
 </body>
 </html>
